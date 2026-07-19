@@ -1,18 +1,14 @@
 const fs = require('fs');
 const path = require('path');
 
-const envContent = `PORT=5000
-MONGODB_URI=mongodb://localhost:27017/ems
-JWT_SECRET=your_jwt_secret_key_change_this_in_production
-NODE_ENV=development
+const envContent = `NEXT_PUBLIC_API_URL=http://localhost:5000/api
 `;
 
-const envPath = path.join(__dirname, '.env');
+const envPath = path.join(__dirname, '.env.local');
 
 if (!fs.existsSync(envPath)) {
   fs.writeFileSync(envPath, envContent);
-  console.log('.env file created successfully');
-  console.log('Please update the JWT_SECRET with a secure key in production');
+  console.log('.env.local file created successfully');
 } else {
-  console.log('.env file already exists');
+  console.log('.env.local file already exists');
 }
